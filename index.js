@@ -470,6 +470,7 @@ function updatePlugin(plugin, complete){
 
 
     function remove(){
+        logger.log(cliCommand+' plugin rm '+plugin.id)
         exec(cliCommand+' plugin rm '+plugin.id, function(err, stdout, stderr) {
             if(err){
                 var msg = "\nError removing plugin '"+plugin.id+"'" + "\n\n" + err;
@@ -499,6 +500,7 @@ function updatePlugin(plugin, complete){
             pluginSource = plugin.source.id;
         }
         var saveCommand = save ? ' --save' : '';
+        logger.log(cliCommand+' plugin add '+pluginSource+saveCommand)
         exec(cliCommand+' plugin add '+pluginSource+saveCommand, function(err, stdout, stderr) {
             if(err){
                 var msg = "\nError adding plugin '"+plugin.id+"'" + "\n\n" + err;
